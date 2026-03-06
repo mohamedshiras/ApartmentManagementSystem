@@ -7,6 +7,8 @@ import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 public class FeedActivity extends AppCompatActivity {
 
     @Override
@@ -53,6 +55,38 @@ public class FeedActivity extends AppCompatActivity {
         navProfile.setOnClickListener(v -> {
             startActivity(new Intent(this, ProfileActivity.class));
             overridePendingTransition(0, 0);
+        BottomNavigationView bottomNav = findViewById(R.id.bottomNavBar);
+        bottomNav.setSelectedItemId(R.id.nav_feed);
+
+        bottomNav.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+
+            if (id == R.id.nav_feed) {
+                // Already here, do nothing
+                return true;
+
+            } else if (id == R.id.nav_announcements) {
+                startActivity(new Intent(this, AnnouncementActivity.class));
+                overridePendingTransition(0, 0);
+                return true;
+
+            } else if (id == R.id.nav_chat) {
+                startActivity(new Intent(this, ChatActivity.class));
+                overridePendingTransition(0, 0);
+                return true;
+
+            } else if (id == R.id.nav_services) {
+                startActivity(new Intent(this, ServicesActivity.class));
+                overridePendingTransition(0, 0);
+                return true;
+
+            } else if (id == R.id.nav_profile) {
+                startActivity(new Intent(this, ProfileActivity.class));
+                overridePendingTransition(0, 0);
+                return true;
+            }
+
+            return false;
         });
     }
 }
