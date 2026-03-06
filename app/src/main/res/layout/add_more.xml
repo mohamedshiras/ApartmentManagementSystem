@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="Add to your post"
+        android:textColor="#0D1B3E"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <!-- Image -->
+    <LinearLayout
+        android:id="@+id/sheetOptionImage"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="8dp">
+        <ImageView android:layout_width="28dp" android:layout_height="28dp"
+            android:src="@drawable/ic_photo" app:tint="#43A047"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginStart="16dp" android:text="Photo"
+            android:textColor="#0D1B3E" android:textSize="14sp"/>
+    </LinearLayout>
+
+    <!-- Video -->
+    <LinearLayout
+        android:id="@+id/sheetOptionVideo"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="8dp">
+        <ImageView android:layout_width="28dp" android:layout_height="28dp"
+            android:src="@drawable/ic_videocam" app:tint="#E53935"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginStart="16dp" android:text="Video"
+            android:textColor="#0D1B3E" android:textSize="14sp"/>
+    </LinearLayout>
+
+    <!-- Document -->
+    <LinearLayout
+        android:id="@+id/sheetOptionDocument"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="8dp">
+        <ImageView android:layout_width="28dp" android:layout_height="28dp"
+            android:src="@drawable/ic_attach_file" app:tint="#0D47A1"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginStart="16dp" android:text="Document"
+            android:textColor="#0D1B3E" android:textSize="14sp"/>
+    </LinearLayout>
+
+</LinearLayout>
