@@ -20,7 +20,6 @@
         android:id="@+id/nav_services"
         android:icon="@drawable/ic_services"
         android:title="Servics" />
-        android:title="Services" />
 
     <item
         android:id="@+id/nav_profile"
