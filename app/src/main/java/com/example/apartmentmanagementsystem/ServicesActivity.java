@@ -28,7 +28,18 @@ public class ServicesActivity extends AppCompatActivity {
 
 
         });
+        setupQuickActions();
         setupBottomNavigation();
+    }
+
+    private void setupQuickActions() {
+        // 2. USE THE CORRECT ID: cardMaintenance (matches activity_services.xml)
+        CardView cardMaintenance = findViewById(R.id.cardComplaint);
+        if (cardMaintenance != null) {
+            cardMaintenance.setOnClickListener(v -> {
+                startActivity(new Intent(this, ComplaintActivity.class));
+            });
+        }
     }
 
     private void setupBottomNavigation() {
