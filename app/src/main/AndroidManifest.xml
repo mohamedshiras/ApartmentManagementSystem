@@ -18,11 +18,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ApartmentManagementSystem">
+        <activity android:name=".ReservationHistoryActivity"
+            android:exported="false"/>
         <activity
             android:name=".MaintenanceActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Noticeadapter"
             android:exported="false" />
         <activity
             android:name=".ReservationsActivity"
