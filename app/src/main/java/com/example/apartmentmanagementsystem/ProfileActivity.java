@@ -7,16 +7,17 @@ import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 public class ProfileActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        this.getSupportActionBar().hide();
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
         setupBottomNavigation();
     }
 
@@ -27,82 +28,31 @@ public class ProfileActivity extends AppCompatActivity {
         LinearLayout navServices = findViewById(R.id.nav_btn_services);
         LinearLayout navProfile = findViewById(R.id.nav_btn_profile);
 
-        android.view.View btnPost = findViewById(R.id.createPostFab);
-        if (btnPost != null) {
-            btnPost.setOnClickListener(v -> {
-                startActivity(new Intent(this, PostActivity.class));
-                overridePendingTransition(0, 0);
-            });
-        }
+        // Profile is current page — do nothing on tap
+        navProfile.setOnClickListener(v -> {});
 
-        // Feed is the current activity, so we can disable its click listener or simply do nothing
-        navFeed.setOnClickListener(v -> {});
+        navFeed.setOnClickListener(v -> {
+            startActivity(new Intent(this, FeedActivity.class));
+            overridePendingTransition(0, 0);
+            finish();
+        });
 
         navNotices.setOnClickListener(v -> {
             startActivity(new Intent(this, AnnouncementActivity.class));
             overridePendingTransition(0, 0);
+            finish();
         });
 
         navChat.setOnClickListener(v -> {
             startActivity(new Intent(this, ChatActivity.class));
             overridePendingTransition(0, 0);
+            finish();
         });
 
         navServices.setOnClickListener(v -> {
             startActivity(new Intent(this, ServicesActivity.class));
             overridePendingTransition(0, 0);
+            finish();
         });
-
-        navProfile.setOnClickListener(v -> {
-            startActivity(new Intent(this, ProfileActivity.class));
-            overridePendingTransition(0, 0);
-        });
-    }
-
-
-
-        BottomNavigationView bottomNav = findViewById(R.id.bottomNavBar);
-
-        // ✅ Set listener FIRST before setSelectedItemId
-        bottomNav.setOnItemSelectedListener(item -> {
-            int id = item.getItemId();
-
-            if (id == R.id.nav_profile) {
-                // Already here, do nothing
-                return true;
-
-            } else if (id == R.id.nav_feed) {
-                startActivity(new Intent(this, FeedActivity.class));
-                overridePendingTransition(0, 0);
-                finish();
-                return true;
-
-            } else if (id == R.id.nav_announcements) {
-                // Uncomment when AnnouncementActivity is ready
-                 startActivity(new Intent(this, AnnouncementActivity.class));
-                 overridePendingTransition(0, 0);
-                 finish();
-                return true;
-
-            } else if (id == R.id.nav_chat) {
-                // Uncomment when ChatActivity is ready
-                 startActivity(new Intent(this, ChatActivity.class));
-                 overridePendingTransition(0, 0);
-                 finish();
-                return true;
-
-            } else if (id == R.id.nav_services) {
-                // Uncomment when ServicesActivity is ready
-                 startActivity(new Intent(this, ServicesActivity.class));
-                 overridePendingTransition(0, 0);
-                 finish();
-                return true;
-            }
-
-            return false;
-        });
-
-        // ✅ Set selected item AFTER listener is attached
-        bottomNav.setSelectedItemId(R.id.nav_profile);
     }
 }
