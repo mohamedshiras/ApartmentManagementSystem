@@ -70,7 +70,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="16dp"
                 app:boxStrokeColor="#3667A6"
                 app:hintEnabled="false">
 
@@ -79,6 +79,33 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Select Category"
+                    android:inputType="none"
+                    android:padding="16dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Priority Level"
+                android:textColor="#214177"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/priorityInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:boxStrokeColor="#3667A6"
+                app:hintEnabled="false">
+
+                <AutoCompleteTextView
+                    android:id="@+id/priorityDropdown"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Select Priority"
                     android:inputType="none"
                     android:padding="16dp" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -97,7 +124,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="16dp"
                 app:boxStrokeColor="#3667A6"
                 app:hintEnabled="false">
 
@@ -123,7 +150,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="32dp"
+                android:layout_marginBottom="24dp"
                 app:boxStrokeColor="#3667A6"
                 app:hintEnabled="false">
 

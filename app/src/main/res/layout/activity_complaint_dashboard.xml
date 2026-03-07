@@ -13,48 +13,121 @@
         android:background="#FFFFFF"
         app:elevation="0dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="72dp"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/backBtn"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:padding="8dp"
-                android:src="@drawable/ic_arrow_back"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:tint="#214177" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp">
 
-            <TextView
-                android:layout_width="wrap_content"
+                <ImageView
+                    android:id="@+id/backBtn"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_arrow_back"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="#214177" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="Complaints"
+                    android:textColor="#214177"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/backBtn"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Search Bar -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:text="Complaints Dashboard"
-                android:textColor="#214177"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/backBtn"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@android:drawable/ic_menu_search"
+                        app:tint="#64748B" />
+                    <EditText
+                        android:id="@+id/searchEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@null"
+                        android:hint="Search complaints..."
+                        android:paddingStart="12dp"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <!-- Filter Chips -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="16dp">
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/filterChipGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:singleSelection="true">
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipAll"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="All"
+                        android:checked="true" />
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipPending"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pending" />
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipResolved"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Resolved" />
+                </com.google.android.material.chip.ChipGroup>
+            </HorizontalScrollView>
+        </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="16dp">
 
             <!-- Stats Overview -->
             <LinearLayout
@@ -77,9 +150,10 @@
                         android:gravity="center"
                         android:orientation="vertical">
                         <TextView
+                            android:id="@+id/pendingCount"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="12"
+                            android:text="0"
                             android:textColor="#3667A6"
                             android:textSize="24sp"
                             android:textStyle="bold" />
@@ -106,9 +180,10 @@
                         android:gravity="center"
                         android:orientation="vertical">
                         <TextView
+                            android:id="@+id/resolvedCount"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="45"
+                            android:text="0"
                             android:textColor="#10B981"
                             android:textSize="24sp"
                             android:textStyle="bold" />
@@ -118,7 +193,7 @@
                             android:text="Resolved"
                             android:textColor="#64748B"
                             android:textSize="12sp" />
-                    </LinearLayout>*
+                    </LinearLayout>
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
 
@@ -131,89 +206,12 @@
                 android:textStyle="bold"
                 android:layout_marginBottom="12dp" />
 
-            <!-- Complaint Item 1 -->
-            <androidx.cardview.widget.CardView
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/complaintsRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="0dp"
-                app:cardBackgroundColor="#FFFFFF">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            android:text="Leaking Pipe in Kitchen"
-                            android:textColor="#1E293B"
-                            android:textStyle="bold" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="PENDING"
-                            android:textColor="#F59E0B"
-                            android:textSize="10sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="Unit 4B · Reported 2 hours ago"
-                        android:textColor="#64748B"
-                        android:textSize="12sp" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- Complaint Item 2 -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="0dp"
-                app:cardBackgroundColor="#FFFFFF">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            android:text="Elevator Noise"
-                            android:textColor="#1E293B"
-                            android:textStyle="bold" />
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="RESOLVED"
-                            android:textColor="#10B981"
-                            android:textSize="10sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="Block C · Reported yesterday"
-                        android:textColor="#64748B"
-                        android:textSize="12sp" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                android:nestedScrollingEnabled="false"
+                tools:listitem="@layout/item_complaint" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

@@ -16,10 +16,10 @@ import com.google.android.material.textfield.TextInputLayout;
 
 public class CreateComplaintActivity extends AppCompatActivity {
 
-    private AutoCompleteTextView categoryDropdown;
+    private AutoCompleteTextView categoryDropdown, priorityDropdown;
     private TextInputEditText complaintTitle;
     private TextInputEditText complaintDescription;
-    private TextInputLayout categoryLayout, titleLayout, descriptionLayout;
+    private TextInputLayout categoryLayout, priorityLayout, titleLayout, descriptionLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +33,12 @@ public class CreateComplaintActivity extends AppCompatActivity {
 
         // Initialize Views
         categoryDropdown = findViewById(R.id.categoryDropdown);
+        priorityDropdown = findViewById(R.id.priorityDropdown);
         complaintTitle = findViewById(R.id.complaintTitle);
         complaintDescription = findViewById(R.id.complaintDescription);
         
         categoryLayout = findViewById(R.id.categoryInputLayout);
+        priorityLayout = findViewById(R.id.priorityInputLayout);
         titleLayout = findViewById(R.id.titleInputLayout);
         descriptionLayout = findViewById(R.id.descriptionInputLayout);
 
@@ -46,8 +48,13 @@ public class CreateComplaintActivity extends AppCompatActivity {
 
         // Setup Category Dropdown
         String[] categories = {"Plumbing", "Electrical", "Cleaning", "Security", "Other"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, categories);
-        categoryDropdown.setAdapter(adapter);
+        ArrayAdapter<String> catAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, categories);
+        categoryDropdown.setAdapter(catAdapter);
+
+        // Setup Priority Dropdown
+        String[] priorities = {"Low", "Medium", "High", "Emergency"};
+        ArrayAdapter<String> prioAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, priorities);
+        priorityDropdown.setAdapter(prioAdapter);
 
         // Setup Submit Button
         MaterialButton submitBtn = findViewById(R.id.submitComplaintBtn);
@@ -63,11 +70,17 @@ public class CreateComplaintActivity extends AppCompatActivity {
 
         // Reset errors
         categoryLayout.setError(null);
+        priorityLayout.setError(null);
         titleLayout.setError(null);
         descriptionLayout.setError(null);
 
         if (TextUtils.isEmpty(categoryDropdown.getText())) {
             categoryLayout.setError("Please select a category");
+            isValid = false;
+        }
+
+        if (TextUtils.isEmpty(priorityDropdown.getText())) {
+            priorityLayout.setError("Please select a priority");
             isValid = false;
         }
 
