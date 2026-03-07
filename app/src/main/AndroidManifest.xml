@@ -19,6 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ApartmentManagementSystem">
         <activity
+            android:name=".MaintenanceActivity"
+            android:exported="false" />
+        <activity
             android:name=".Noticeadapter"
             android:exported="false" />
         <activity
@@ -54,19 +57,15 @@
         <activity
             android:name=".PostActivity"
             android:exported="false" />
-
         <activity
             android:name=".ComplaintActivity"
             android:exported="false" />
-
         <activity
             android:name=".FileComplaintActivity"
             android:exported="false" />
-
         <activity
             android:name=".ComplaintDetailActivity"
             android:exported="false" />
-
     </application>
 
 </manifest>
