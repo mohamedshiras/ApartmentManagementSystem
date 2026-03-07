@@ -50,7 +50,7 @@ public class FeedActivity extends AppCompatActivity {
         navFeed.setOnClickListener(v -> {});
 
         navNotices.setOnClickListener(v -> {
-            startActivity(new Intent(this, AnnouncementActivity.class));
+            startActivity(new Intent(this, NoticesActivity.class));
             overridePendingTransition(0, 0);
             finish();
         });
