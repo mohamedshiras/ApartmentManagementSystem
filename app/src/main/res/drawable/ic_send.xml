@@ -3,6 +3,18 @@
     android:height="24dp"
     android:viewportWidth="24"
     android:viewportHeight="24">
+
+    <group
+        android:pivotX="12"
+        android:pivotY="12"
+        android:rotation="-45">
+
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M2,21L23,12 2,3v7l15,2L2,14z"/>
+
+    </group>
+
     <path
         android:fillColor="#FFFFFF"
         android:pathData="M2.01,21L23,12L2.01,3L2,10L17,12L2,14L2.01,21Z"/>

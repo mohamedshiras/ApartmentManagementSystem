@@ -2,6 +2,9 @@ package com.example.apartmentmanagementsystem;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -18,6 +21,46 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void setupBottomNavigation() {
+        FrameLayout navFeed = findViewById(R.id.nav_btn_feed);
+        LinearLayout navNotices = findViewById(R.id.nav_btn_notices);
+        LinearLayout navChat = findViewById(R.id.nav_btn_chat);
+        LinearLayout navServices = findViewById(R.id.nav_btn_services);
+        LinearLayout navProfile = findViewById(R.id.nav_btn_profile);
+
+        android.view.View btnPost = findViewById(R.id.createPostFab);
+        if (btnPost != null) {
+            btnPost.setOnClickListener(v -> {
+                startActivity(new Intent(this, PostActivity.class));
+                overridePendingTransition(0, 0);
+            });
+        }
+
+        // Feed is the current activity, so we can disable its click listener or simply do nothing
+        navFeed.setOnClickListener(v -> {});
+
+        navNotices.setOnClickListener(v -> {
+            startActivity(new Intent(this, AnnouncementActivity.class));
+            overridePendingTransition(0, 0);
+        });
+
+        navChat.setOnClickListener(v -> {
+            startActivity(new Intent(this, ChatActivity.class));
+            overridePendingTransition(0, 0);
+        });
+
+        navServices.setOnClickListener(v -> {
+            startActivity(new Intent(this, ServicesActivity.class));
+            overridePendingTransition(0, 0);
+        });
+
+        navProfile.setOnClickListener(v -> {
+            startActivity(new Intent(this, ProfileActivity.class));
+            overridePendingTransition(0, 0);
+        });
+    }
+
+
+
         BottomNavigationView bottomNav = findViewById(R.id.bottomNavBar);
 
         // ✅ Set listener FIRST before setSelectedItemId
