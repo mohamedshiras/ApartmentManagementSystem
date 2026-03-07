@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -67,30 +68,39 @@ public class PostActivity extends AppCompatActivity {
         setContentView(R.layout.activity_post);
         if (getSupportActionBar() != null) getSupportActionBar().hide();
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        // Safely check if 'main' exists before applying insets
+        View mainView = findViewById(R.id.activity_post);
+        if (mainView != null) {
+            ViewCompat.setOnApplyWindowInsetsListener(mainView, (v, insets) -> {
+                Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+                v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+                return insets;
+            });
+        }
 
-        // ── Back button ────────────────────────────────────
+        // ── Safely attach Back button ────────────────────────────────────
         ImageButton btnBack = findViewById(R.id.btnBack);
-        btnBack.setOnClickListener(v -> {
-            Intent intent = new Intent(PostActivity.this, FeedActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-            startActivity(intent);
-            finish();
-        });
+        if (btnBack != null) {
+            btnBack.setOnClickListener(v -> {
+                Intent intent = new Intent(PostActivity.this, FeedActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+                finish();
+            });
+        }
 
-        // ── Photo button → request permission → pick image ─
+        // ── Safely attach Photo button ─
         LinearLayout optionPhoto = findViewById(R.id.optionPhoto);
-        optionPhoto.setOnClickListener(v -> requestImagePermissionAndPick());
+        if (optionPhoto != null) {
+            optionPhoto.setOnClickListener(v -> requestImagePermissionAndPick());
+        }
 
-        // ── Add More button → permission → bottom sheet ────
+        // ── Safely attach Add More button ────
         MaterialButton btnAddMore = findViewById(R.id.btnAddMore);
-        btnAddMore.setOnClickListener(v -> requestStoragePermissionAndShowSheet());
+        if (btnAddMore != null) {
+            btnAddMore.setOnClickListener(v -> requestStoragePermissionAndShowSheet());
+        }
     }
-
     // ══════════════════════════════════════════════════════
     //  PHOTO PERMISSION + PICK
     // ══════════════════════════════════════════════════════
