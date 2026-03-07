@@ -50,6 +50,13 @@ public class ServicesActivity extends AppCompatActivity {
                 startActivity(new Intent(this, MaintenanceActivity.class));
             });
         }
+
+        CardView cardReservation = findViewById(R.id.cardReservation);
+        if (cardReservation != null) {
+            cardReservation.setOnClickListener(v -> {
+                startActivity(new Intent(this, ReservationsActivity.class));
+            });
+        }
     }
 
     private void setupBottomNavigation() {

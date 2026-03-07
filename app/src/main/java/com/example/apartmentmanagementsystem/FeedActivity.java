@@ -36,6 +36,13 @@ public class FeedActivity extends AppCompatActivity {
                 startActivity(new Intent(this, MaintenanceActivity.class));
             });
         }
+
+        CardView serviceReservation = findViewById(R.id.serviceReservation);
+        if (serviceReservation != null) {
+            serviceReservation.setOnClickListener(v -> {
+                startActivity(new Intent(this, ReservationsActivity.class));
+            });
+        }
     }
 
     private void setupPostButton() {
