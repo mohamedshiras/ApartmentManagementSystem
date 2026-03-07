@@ -19,11 +19,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ApartmentManagementSystem">
         <activity
+            android:name=".ReservationsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar"/>
+        <activity
             android:name=".Noticeadapter"
-            android:exported="false" />
+            android:exported="false"
+            tools:ignore="Instantiatable"/>
         <activity
             android:name=".Notice"
-            android:exported="false" />
+            android:exported="false"
+            tools:ignore="Instantiatable" />
         <activity
             android:name=".NoticesActivity"
             android:exported="false" />
@@ -54,19 +60,15 @@
         <activity
             android:name=".PostActivity"
             android:exported="false" />
-
         <activity
             android:name=".ComplaintActivity"
             android:exported="false" />
-
         <activity
             android:name=".FileComplaintActivity"
             android:exported="false" />
-
         <activity
             android:name=".ComplaintDetailActivity"
             android:exported="false" />
-
     </application>
 
 </manifest>

@@ -29,6 +29,11 @@ public class FeedActivity extends AppCompatActivity {
         pillMaintenance.setOnClickListener(v -> {
             startActivity(new Intent(this, ComplaintActivity.class));
         });
+
+        CardView pillReservation = findViewById(R.id.serviceReservation);
+        pillReservation.setOnClickListener(v -> {
+            startActivity(new Intent(this, ReservationsActivity.class));
+        });
     }
 
     private void setupPostButton() {
